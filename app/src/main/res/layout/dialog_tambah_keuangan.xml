@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:background="@drawable/rounded_spinner_dialog"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jenis"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:id="@+id/spinnerJenis"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:entries="@array/jenis_array"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/rounded_spinner_dialog"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kategori"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:id="@+id/spinnerKategori"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Nominal"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="#5D576B"
+        app:hintTextColor="#5D576B">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:textColor="#5D576B"
+            android:textColorHint="#5D576B" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Keterangan"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="#5D576B"
+        app:hintTextColor="#5D576B">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/keterangan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:textColor="#5D576B"
+            android:textColorHint="#5D576B" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Tanggal"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="#5D576B"
+        app:hintTextColor="#5D576B">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="true"
+            android:minHeight="48dp"
+            android:textColor="#5D576B"
+            android:textColorHint="#5D576B" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/rounded_spinner_dialog"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rekening"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:id="@+id/spinnerRekening"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Group for first set of items -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_rekening"
+            android:title="Data Rekening"
+            android:icon="@drawable/baseline_credit_card_24" />
+        <item
+            android:id="@+id/nav_kategori"
+            android:title="Kategori Keuangan"
+            android:icon="@drawable/baseline_account_balance_wallet_24" />
+        <item
+            android:id="@+id/nav_keuangan"
+            android:title="Catatan Keuangan"
+            android:icon="@drawable/baseline_edit_note_24" />
+    </group>
+
+    <!-- Group for logout item -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_keluar"
+            android:title="Keluar Aplikasi"
+            android:icon="@drawable/baseline_logout_24" />
+    </group>
+</menu>
