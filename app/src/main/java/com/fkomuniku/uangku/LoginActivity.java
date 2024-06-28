@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginUser();
+                login();
             }
         });
 
@@ -66,12 +66,12 @@ public class LoginActivity extends AppCompatActivity {
         finishAffinity();  // Menutup semua aktivitas dalam stack dan mengakhiri aplikasi
     }
 
-    private void loginUser() {
+    private void login() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Isi email dan password", Toast.LENGTH_SHORT).show();
             return;
         }
 

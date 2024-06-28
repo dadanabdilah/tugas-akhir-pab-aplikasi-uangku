@@ -45,7 +45,7 @@ public class DaftarActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.registerButton);
         loginButton = findViewById(R.id.loginButtonRegister);
 
-        registerButton.setOnClickListener(v -> registerUser());
+        registerButton.setOnClickListener(v -> daftar());
 
         loginButton.setOnClickListener(v -> {
             Intent intent =  new Intent(DaftarActivity.this, LoginActivity.class);
@@ -62,7 +62,7 @@ public class DaftarActivity extends AppCompatActivity {
         finish();
     }
 
-    private void registerUser() {
+    private void daftar() {
         String nama_pengguna = nameEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
@@ -91,22 +91,22 @@ public class DaftarActivity extends AppCompatActivity {
                         finish();
                         Toast.makeText(DaftarActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
-                        Log.d("Register", response.body().toString());
+                        Log.d("Daftar", response.body().toString());
                         Toast.makeText(DaftarActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     try {
-                        Log.e("Register", response.errorBody() != null ? response.errorBody().string() : "Error body is null");
+                        Log.e("Daftar", response.errorBody() != null ? response.errorBody().string() : "Error body is null");
                     } catch (IOException e) {
-                        Log.e("Register", "Error reading errorBody", e);
+                        Log.e("Daftar", "Error reading errorBody", e);
                     }
-                    Toast.makeText(DaftarActivity.this, "Registrasi gagal", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DaftarActivity.this, "Pendaftaran akun gagal", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<DaftarResponse> call, Throwable t) {
-                Log.e("Register", "Register user failed", t);
+                Log.e("Daftar", "Terjadi kesalahan", t);
                 Toast.makeText(DaftarActivity.this, "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
             }
         });
