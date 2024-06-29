@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fkomuniku.uangku.adapter.KategoriAdapter;
+import com.fkomuniku.uangku.model.ApiResponse;
 import com.fkomuniku.uangku.model.Kategori;
 import com.fkomuniku.uangku.model.KategoriResponse;
 import com.fkomuniku.uangku.model.TokenManager;
@@ -175,10 +176,10 @@ public class KategoriActivity extends AppCompatActivity {
 
     private void addKategori(String kategori, String jenis) {
         String token = TokenManager.getInstance(this).getToken();
-        Call<ResponseBody> call = ApiClient.getInstanceWithToken(token).getApiService().addKategori(kategori, jenis);
-        call.enqueue(new Callback<ResponseBody>() {
+        Call<ApiResponse> call = ApiClient.getInstanceWithToken(token).getApiService().addKategori(kategori, jenis);
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(KategoriActivity.this, "Tambah Kategori Berhasil", Toast.LENGTH_SHORT).show();
                     fetchKategoriData();
@@ -188,7 +189,7 @@ public class KategoriActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
                 Toast.makeText(KategoriActivity.this, "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
             }
         });

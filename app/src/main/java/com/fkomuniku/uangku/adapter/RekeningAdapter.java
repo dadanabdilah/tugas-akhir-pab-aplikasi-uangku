@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.fkomuniku.uangku.CurrencyFormatter;
 import com.fkomuniku.uangku.R;
 import com.fkomuniku.uangku.RekeningActivity;
+import com.fkomuniku.uangku.model.ApiResponse;
 import com.fkomuniku.uangku.model.Rekening;
 import com.fkomuniku.uangku.ApiClient;
 import com.fkomuniku.uangku.model.TokenManager;
@@ -98,10 +99,10 @@ public class RekeningAdapter extends RecyclerView.Adapter<RekeningAdapter.ViewHo
 
     private void updateRekening(String id, String rekening) {
         String token = TokenManager.getInstance(context).getToken();
-        Call<Void> call = ApiClient.getInstanceWithToken(token).getApiService().updateRekening(id, rekening);
-        call.enqueue(new Callback<Void>() {
+        Call<ApiResponse> call = ApiClient.getInstanceWithToken(token).getApiService().updateRekening(id, rekening);
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(context, "Edit Data Rekening Berhasil", Toast.LENGTH_SHORT).show();
                     if (context instanceof RekeningActivity) {
@@ -113,7 +114,7 @@ public class RekeningAdapter extends RecyclerView.Adapter<RekeningAdapter.ViewHo
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
                 Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
             }
         });
@@ -121,10 +122,10 @@ public class RekeningAdapter extends RecyclerView.Adapter<RekeningAdapter.ViewHo
 
     private void deleteRekening(String id, int position) {
         String token = TokenManager.getInstance(context).getToken();
-        Call<Void> call = ApiClient.getInstanceWithToken(token).getApiService().deleteRekening(id);
-        call.enqueue(new Callback<Void>() {
+        Call<ApiResponse> call = ApiClient.getInstanceWithToken(token).getApiService().deleteRekening(id);
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(context, "Hapus Data Rekening Berhasil", Toast.LENGTH_SHORT).show();
                     rekeningList.remove(position);
@@ -136,7 +137,7 @@ public class RekeningAdapter extends RecyclerView.Adapter<RekeningAdapter.ViewHo
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
                 Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
             }
         });

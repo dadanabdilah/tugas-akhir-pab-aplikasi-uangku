@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.fkomuniku.uangku.R;
+import com.fkomuniku.uangku.model.ApiResponse;
 import com.fkomuniku.uangku.model.Kategori;
 import com.fkomuniku.uangku.ApiClient;
 import com.fkomuniku.uangku.ApiService;
@@ -138,10 +139,10 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
 
     private void updateKategori(String id, String kategori, String jenis, int position) {
         String token = TokenManager.getInstance(context).getToken();
-        Call<ResponseBody> call = ApiClient.getInstanceWithToken(token).getApiService().updateKategori(id, kategori, jenis);
-        call.enqueue(new Callback<ResponseBody>() {
+        Call<ApiResponse> call = ApiClient.getInstanceWithToken(token).getApiService().updateKategori(id, kategori, jenis);
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     kategoriList.get(position).setKategori(kategori);
                     kategoriList.get(position).setJenis(jenis);
@@ -153,7 +154,7 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
                 Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
             }
         });
@@ -162,10 +163,10 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
     private void deleteKategori(String id, int position) {
         String token = TokenManager.getInstance(context).getToken();
 
-        Call<ResponseBody> call = ApiClient.getInstanceWithToken(token).getApiService().deleteKategori(id);
-        call.enqueue(new Callback<ResponseBody>() {
+        Call<ApiResponse> call = ApiClient.getInstanceWithToken(token).getApiService().deleteKategori(id);
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     kategoriList.remove(position);
                     notifyItemRemoved(position);
@@ -176,7 +177,7 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
                 Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
             }
         });

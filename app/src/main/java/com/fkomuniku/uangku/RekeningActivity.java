@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fkomuniku.uangku.adapter.RekeningAdapter;
+import com.fkomuniku.uangku.model.ApiResponse;
 import com.fkomuniku.uangku.model.Rekening;
 import com.fkomuniku.uangku.model.RekeningResponse;
 import com.fkomuniku.uangku.ApiClient;
@@ -151,12 +152,17 @@ public class RekeningActivity extends AppCompatActivity {
 
     private void addRekening(String rekening) {
         String token = TokenManager.getInstance(this).getToken();
-        Call<Void> call = ApiClient.getInstanceWithToken(token).getApiService().addRekening(rekening);
-        call.enqueue(new Callback<Void>() {
+        Call<ApiResponse> call = ApiClient.getInstanceWithToken(token).getApiService().addRekening(rekening);
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(RekeningActivity.this, "Tambah Data Rekening Berhasil", Toast.LENGTH_SHORT).show();
+                    ApiResponse apiResponse = response.body();
+                    if (apiResponse != null) {
+                        Toast.makeText(RekeningActivity.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RekeningActivity.this, "Tambah Data Rekening Berhasil", Toast.LENGTH_SHORT).show();
+                    }
                     refreshRekeningData();
                 } else {
                     Toast.makeText(RekeningActivity.this, "Tambah Data Rekening Gagal", Toast.LENGTH_SHORT).show();
@@ -164,7 +170,7 @@ public class RekeningActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
                 Toast.makeText(RekeningActivity.this, "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
             }
         });

@@ -32,28 +32,28 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("rekening/add")
-    Call<Void> addRekening(@Field("rekening") String rekening);
+    Call<ApiResponse> addRekening(@Field("rekening") String rekening);
 
     @FormUrlEncoded
     @POST("rekening/update")
-    Call<Void> updateRekening(@Field("id") String id, @Field("rekening") String rekening);
+    Call<ApiResponse> updateRekening(@Field("id") String id, @Field("rekening") String rekening);
 
     @DELETE("rekening/{id}")
-    Call<Void> deleteRekening(@Path("id") String id);
+    Call<ApiResponse> deleteRekening(@Path("id") String id);
 
     @GET("kategori")
     Call<KategoriResponse> getKategori();
 
     @FormUrlEncoded
     @POST("kategori/add")
-    Call<ResponseBody> addKategori(@Field("kategori") String kategori, @Field("jenis") String jenis);
+    Call<ApiResponse> addKategori(@Field("kategori") String kategori, @Field("jenis") String jenis);
 
     @FormUrlEncoded
     @POST("kategori/update")
-    Call<ResponseBody> updateKategori(@Field("id") String id, @Field("kategori") String kategori, @Field("jenis") String jenis);
+    Call<ApiResponse> updateKategori(@Field("id") String id, @Field("kategori") String kategori, @Field("jenis") String jenis);
 
     @DELETE("kategori/{id}")
-    Call<ResponseBody> deleteKategori(@Path("id") String id);
+    Call<ApiResponse> deleteKategori(@Path("id") String id);
 
     @GET("keuangan/info")
     Call<KeuanganInfoResponse> getKeuanganInfo();
