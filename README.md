@@ -7,4 +7,4 @@ Projek ini adalah implementasi API dari project [Website UANGKU](https://github.
 1. **Setting End Point API**:
    - Atur konfigurasi baseUrl pada file `ApiClient.java`.
 
-Setelah melakukan konfigurasi endpoint API projek sudah bisa dilakukan build.a
+Setelah melakukan konfigurasi endpoint API projek sudah bisa dilakukan build.
